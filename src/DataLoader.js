@@ -5,11 +5,12 @@ const DataLoader = () => {
     const [data, setData] = useState([]);
 
     // useEffect is similar to lifecycle
+    // To prevent infinite loop, pass empty array as 2nd arg
     useEffect(() => {
         fetch('http://dummy.restapiexample.com/api/v1/employees')
             .then(response => response.json())
             .then(data => setData(data))
-    })
+    },[])
 
     return (
         <div>
